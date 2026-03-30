@@ -1,0 +1,44 @@
+#+TITLE: solo-modeline
+#+AUTHOR: Miguel Guedes
+
+Show the mode-line only in the active window. Inactive windows get their mode-line hidden and instead display a discrete buffer name label in the top-right corner. Window dividers provide visual separation.
+
+* Features
+
+- Hides the mode-line in all inactive windows.
+- Shows a buffer name label in the top-right corner of each inactive window.
+  Labels float when the first visible line is short; overlay the rightmost characters when it is long.
+- Automatically enables =window-divider-mode= with a bottom divider for clean visual separation (optional).
+- Correctly handles child frames (corfu, posframe, etc.) and buffers displayed in multiple windows.
+
+* Requirements
+
+Emacs 29.1 or later.
+
+* Installation
+
+#+begin_src emacs-lisp
+(package-vc-install "https://github.com/midsbie/solo-modeline")
+#+end_src
+
+* Configuration
+
+Enable the mode:
+
+#+begin_src emacs-lisp
+(solo-modeline-mode 1)
+#+end_src
+
+Customizable options (=M-x customize-group RET solo-modeline=):
+
+| Variable                               | Default | Description                                   |
+|----------------------------------------+---------+-----------------------------------------------|
+| =solo-modeline-show-buffer-labels=     | =t=     | Show buffer name labels in inactive windows.  |
+| =solo-modeline-manage-window-dividers= | =t=     | Enable =window-divider-mode= automatically.   |
+| =solo-modeline-window-divider-width=   | =1=     | Width in pixels of the bottom window divider. |
+
+The face =solo-modeline-inactive= controls the appearance of buffer name labels and inherits from =header-line= by default.
+
+* License
+
+Distributed under the MIT License. See [[file:LICENSE][LICENSE]] for details.
