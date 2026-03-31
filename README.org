@@ -1,5 +1,6 @@
 #+TITLE: solo-modeline
 #+AUTHOR: Miguel Guedes
+#+OPTIONS: toc:nil num:nil ^:nil
 
 Show the mode-line only in the active window. Inactive windows get their mode-line hidden and instead display a discrete buffer name label in the top-right corner. Window dividers provide visual separation.
 
@@ -8,7 +9,7 @@ Show the mode-line only in the active window. Inactive windows get their mode-li
 - Hides the mode-line in all inactive windows.
 - Shows a buffer name label in the top-right corner of each inactive window.
   Labels float when the first visible line is short; overlay the rightmost characters when it is long.
-- Automatically enables =window-divider-mode= with a bottom divider for clean visual separation (optional).
+- Automatically enables ~window-divider-mode~ with a bottom divider for clean visual separation (optional).
 - Correctly handles child frames (corfu, posframe, etc.) and buffers displayed in multiple windows.
 
 * Requirements
@@ -30,15 +31,13 @@ Enable the mode:
 (solo-modeline-mode 1)
 #+end_src
 
-Customizable options (=M-x customize-group RET solo-modeline=):
+Customizable options (~M-x customize-group RET solo-modeline~):
 
-| Variable                               | Default | Description                                   |
-|----------------------------------------+---------+-----------------------------------------------|
-| =solo-modeline-show-buffer-labels=     | =t=     | Show buffer name labels in inactive windows.  |
-| =solo-modeline-manage-window-dividers= | =t=     | Enable =window-divider-mode= automatically.   |
-| =solo-modeline-window-divider-width=   | =1=     | Width in pixels of the bottom window divider. |
+- ~solo-modeline-show-buffer-labels~ :: Show buffer name labels in inactive windows (default: ~t~).
+- ~solo-modeline-manage-window-dividers~ :: Enable ~window-divider-mode~ automatically (default: ~t~).
+- ~solo-modeline-window-divider-width~ :: Width in pixels of the bottom window divider (default: ~1~).
 
-The face =solo-modeline-inactive= controls the appearance of buffer name labels and inherits from =header-line= by default.
+The face ~solo-modeline-inactive~ controls the appearance of buffer name labels and inherits from ~header-line~ by default.
 
 * License
 
