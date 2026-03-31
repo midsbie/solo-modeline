@@ -33,8 +33,10 @@
 Any previously displayed labels are removed first."
   (solo-modeline-inactive-remove)
   (dolist (win windows)
-    ;; Skip child frames (corfu, posframe, etc.)
-    (unless (frame-parent (window-frame win))
+    ;; Skip child frames (corfu, posframe, etc.) and internal buffers
+    ;; whose name starts with a space (transient, which-key, etc.)
+    (unless (or (frame-parent (window-frame win))
+                (eq ?\s (aref (buffer-name (window-buffer win)) 0)))
       (with-current-buffer (window-buffer win)
         (let* ((name (buffer-name))
                (label (concat " " name " "))
