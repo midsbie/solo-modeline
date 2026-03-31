@@ -65,10 +65,11 @@ Set to nil if you manage window dividers yourself."
         inactive)
     (walk-windows
      (lambda (win)
-       (if (eq win active)
-           (set-window-parameter win 'mode-line-format nil)
-         (set-window-parameter win 'mode-line-format 'none)
-         (push win inactive)))
+       (unless (frame-parent (window-frame win))
+         (if (eq win active)
+             (set-window-parameter win 'mode-line-format nil)
+           (set-window-parameter win 'mode-line-format 'none)
+           (push win inactive))))
      nil t)
     (when solo-modeline-show-buffer-labels
       (solo-modeline-inactive-update inactive))))
