@@ -19,6 +19,7 @@ Emacs 29.1 or later.
 
 #+begin_src emacs-lisp
 (package-vc-install "https://github.com/midsbie/solo-modeline")
+(solo-modeline-mode 1)
 #+end_src
 
 * Configuration
